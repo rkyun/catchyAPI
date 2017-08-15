@@ -20,7 +20,7 @@ router
       res.send({user})
     }, (err)=>{
       res.status(400).send(err);
-    })    
+    });
   });
   
   

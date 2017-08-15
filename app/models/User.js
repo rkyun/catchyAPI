@@ -29,8 +29,10 @@ UserSchema.pre('save', function(next){
         bcrypt.hash(user.password, 10).then((hash)=>{
             user.password = hash;
             next();
-        }).catch(()=>{
-            next();
+        }).catch((e)=>{
+            var err = new Error("Hashing password gone wrong");
+            err._message = "Hashing password gone wrong";  
+            next(err);
         });
     } else {
         next();
