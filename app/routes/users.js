@@ -15,11 +15,10 @@ router
       password: req.body.password,
       type: req.body.type,
     });
-
-    user.save().then((doc) => {
-      res.send({ doc });
-    }, (err) => {
-      res.status(400).send(err);
+    user.save().then(() => user.generateAuthToken()).then((token) => {
+      res.set('x-auth', token).send(user);
+    }).catch((e) => {
+      res.status(400).send(e);
     });
   });
 
