@@ -29,7 +29,7 @@ const PresentationSchema = new Schema({
     required: true,
   },
   options: {
-    viewersLimit: {
+    participantsLimit: {
       type: Number,
       required: true,
     },
@@ -40,6 +40,10 @@ const PresentationSchema = new Schema({
     questionsEnabled: {
       type: Boolean,
       required: true,
+    },
+    questionsModeratable: {
+      type: Boolean,
+      require: true,
     },
     questionsModerated: {
       type: Boolean,
@@ -52,7 +56,7 @@ const PresentationSchema = new Schema({
     slidesLimit: {
       type: Number,
       required: true,
-    }
+    },
   },
 
 });
