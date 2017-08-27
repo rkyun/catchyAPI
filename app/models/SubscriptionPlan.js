@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const SubscriptionTypeSchema = new Schema({
+const SubscriptionPlanSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -35,6 +35,6 @@ const SubscriptionTypeSchema = new Schema({
   },
 });
 
-const SubscriptionType = mongoose.model('SubscriptionType', SubscriptionTypeSchema);
+const SubscriptionPlan = mongoose.model('SubscriptionType', SubscriptionPlanSchema);
 
-module.exports = { SubscriptionType };
+module.exports = { SubscriptionPlan };
