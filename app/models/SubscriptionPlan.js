@@ -35,6 +35,6 @@ const SubscriptionPlanSchema = new Schema({
   },
 });
 
-const SubscriptionPlan = mongoose.model('SubscriptionType', SubscriptionPlanSchema);
+const SubscriptionPlan = mongoose.model('SubscriptionPlan', SubscriptionPlanSchema);
 
 module.exports = { SubscriptionPlan };
