@@ -22,7 +22,7 @@ router
   .get('/', (req, res) => {
     SubscriptionPlan.find().then((plans) => {
       if (!plans) {
-        return res.send();
+        return res.status(404).send();
       }
       return res.send(plans);
     }).catch((err) => {

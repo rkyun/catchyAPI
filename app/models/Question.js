@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const { ObjectID } = require('mongodb');
+
 const QuestionSchema = new Schema({
   question: {
     type: String,
@@ -12,9 +14,9 @@ const QuestionSchema = new Schema({
     default: 0,
     min: 0,
   },
-  accepted: {
-    type: Boolean,
-    default: false,
+  status: {
+    type: String,
+    default: 'Pending', // Rejected, Pending, Accepted
     required: true,
   },
   presentation: {
@@ -23,6 +25,15 @@ const QuestionSchema = new Schema({
     required: true,
   },
 });
+
+QuestionSchema.statics.findByPresentationId = function (id) {
+  const Question = this;
+  if (!ObjectID.isValid(id)) {
+    return Promise.reject();
+  }
+
+  return Question.find({ presentation: id });
+};
 
 const Question = mongoose.model('Question', QuestionSchema);
 
